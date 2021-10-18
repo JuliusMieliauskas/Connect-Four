@@ -34,15 +34,28 @@ const checkUp = (i, j) => {
   return (table[i][j] == table[i-1][j] && table[i][j] == table[i-2][j] && table[i][j] == table[i-3][j] && table[i][j] != 0);
 }
 
+const checkDiagonalLeft = (i, j) => {
+  if(i < 3 || j < 3) return false;
+  return (table[i][j] == table[i-1][j-1] && table[i][j] == table[i-2][j-2] && table[i][j] == table[i-3][j-3] && table[i][j] != 0);
+}
+
+const checkDiagonalRight = (i, j) => {
+  if(i > 4 || j > 4) return false;
+  return (table[i][j] == table[i-1][j+1] && table[i][j] == table[i-2][j+2] && table[i][j] == table[i-3][j+3] && table[i][j] != 0);
+}
+
 const check = (i, j) => {
-  return checkUp(i, j) || checkRight(i, j);
+  return checkUp(i, j) || checkRight(i, j) || checkDiagonalLeft(i, j) || checkDiagonalRight(i, j);
 }
 
 const checkTable = () => {
   for(let i = 0; i<7; i++) {
     for(let j = 0; j<7; j++) {
       console.log("Checking with: ", i, j);
-       if(check(i, j)) return true;
+       if(check(i, j)) {
+         return true;
+         document.getElemntsByClassName('popup')[0].textContent = "winner is me";
+       }
     }
   }
 }
