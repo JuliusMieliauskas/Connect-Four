@@ -54,7 +54,7 @@ const checkTable = () => {
       console.log("Checking with: ", i, j);
        if(check(i, j)) {
          return true;
-         document.getElemntsByClassName('popup')[0].textContent = "winner is me";
+         document.getElementsByClassName('popup')[0].textContent = "winner is me";
        }
     }
   }
