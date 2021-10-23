@@ -40,7 +40,7 @@ const checkDiagonalLeft = (i, j) => {
 }
 
 const checkDiagonalRight = (i, j) => {
-  if(i > 4 || j > 4) return false;
+  if(i < 3 || j > 4) return false;
   return (table[i][j] == table[i-1][j+1] && table[i][j] == table[i-2][j+2] && table[i][j] == table[i-3][j+3] && table[i][j] != 0);
 }
 
@@ -53,8 +53,8 @@ const checkTable = () => {
     for(let j = 0; j<7; j++) {
       console.log("Checking with: ", i, j);
        if(check(i, j)) {
+         document.getElementsByClassName('popup')[0].textContent = (playerTurn) ? "Winner is black" : "Winner is red";
          return true;
-         document.getElementsByClassName('popup')[0].textContent = "winner is me";
        }
     }
   }
